@@ -10,7 +10,7 @@ namespace testeAc.models
 
         public int id{ get; set; }
         public string Nome { get; set; }
-public string disponivel_ate{get; set; }
+public DateTime disponivel_ate{get; set; }
 public string descricao{get; set; }
 
         public dataModel()
@@ -38,7 +38,7 @@ conectSql conectData= JsonConvert.DeserializeObject<conectSql>(readFile);
 //get a data em mysql
 id = Convert.ToInt32(reader["id"]),
                 Nome =Convert.ToString(reader["nome"]),
-                disponivel_ate =Convert.ToString(reader["disponivel_ate"]),
+                disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
                 descricao =Convert.ToString(reader["descricao"])
                 });
             }
@@ -63,7 +63,7 @@ return data;
 //get a data em mysql
 id = Convert.ToInt32(reader["id"]),
                 Nome =Convert.ToString(reader["nome"]),
-                disponivel_ate =Convert.ToString(reader["disponivel_ate"]),
+                disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
                 descricao =Convert.ToString(reader["descricao"])
                 });
             }
