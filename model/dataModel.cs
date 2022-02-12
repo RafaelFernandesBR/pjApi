@@ -72,6 +72,15 @@ id = Convert.ToInt32(reader["id"]),
 return data;
 }
 
+//delet fron id
+        public void Delete(string query)
+        {
+            this.conm.Open();
+            MySqlCommand cmd = new MySqlCommand(query, this.conm);
+            cmd.ExecuteNonQuery();
+            this.conm.Close();
+}
+
 //insert a data fron mysql.
 public void Insert(string query)
 {

@@ -34,9 +34,18 @@ tt.Insert("INSERT INTO aplicativos(nome,descricao,disponivel_ate) VALUES('"+nome
         public IActionResult getId([FromQuery] int id)
         {
 dataModel tt=new dataModel();
-//inserte data
+//get data
 var final=tt.GetId("SELECT * FROM aplicativos WHERE id = "+id+";");
 return Json(final);
+		}
+
+[HttpGet("[action]")]
+        public IActionResult deleteId([FromQuery] int id)
+        {
+dataModel tt=new dataModel();
+//delete data
+tt.Delete("DELETE FROM aplicativos WHERE id = "+id+";");
+		return Json("ok");
 		}
     }
 }
