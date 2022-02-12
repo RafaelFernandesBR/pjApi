@@ -1,4 +1,7 @@
 # pjApi
 um projeto simples em .net
 ## Sobre.
-Um projeto simples, que faz algumas consultas e incere dados no banco de dados não relacional mysql.
+
+Um projeto simples, que faz algumas consultas e insere dados no banco de dados não relacional mysql.
+
+O intuito é cadastrar os aplicativos que estão gratuito na play store por tempo determinado, e retornar em formato json, para uso posterior
