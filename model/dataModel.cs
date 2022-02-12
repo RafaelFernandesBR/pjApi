@@ -1,7 +1,7 @@
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 
-namespace testeAc.models
+namespace pjApi.models
 {
 	//class that will fetch data from mysql em table aplicativos, and return in json.
 	public class dataModel

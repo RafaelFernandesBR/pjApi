@@ -1,4 +1,4 @@
-namespace testeAc.models
+namespace pjApi.models
 {
 class conectSql
 {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using testeAc.models;
+using pjApi.models;
 
-namespace testeAc.Controllers
+namespace pjApi.Controllers
 {
     public class ApiController : Controller
     {
