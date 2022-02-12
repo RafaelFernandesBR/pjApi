@@ -29,5 +29,14 @@ dataModel tt=new dataModel();
 tt.Insert("INSERT INTO aplicativos(nome,descricao,disponivel_ate) VALUES('"+nome+"','"+descricao+"','"+disponivel_ate+"')");
 		return Json("ok");
 		}
+
+	[HttpGet("[action]")]
+        public IActionResult getId([FromQuery] int id)
+        {
+dataModel tt=new dataModel();
+//inserte data
+var final=tt.GetId("SELECT * FROM aplicativos WHERE id = "+id+";");
+return Json(final);
+		}
     }
 }

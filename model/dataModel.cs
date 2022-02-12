@@ -47,6 +47,31 @@ id = Convert.ToInt32(reader["id"]),
 return data;
 }
 
+//return app for id.
+        public List<dataModel> GetId(string query)
+        {
+			            List<dataModel> data = new List<dataModel>();
+
+            this.conm.Open();
+            MySqlCommand cmd = new MySqlCommand(query, this.conm);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                data.Add(new dataModel
+                {
+//get a data em mysql
+id = Convert.ToInt32(reader["id"]),
+                Nome =Convert.ToString(reader["nome"]),
+                disponivel_ate =Convert.ToString(reader["disponivel_ate"]),
+                descricao =Convert.ToString(reader["descricao"])
+                });
+            }
+            reader.Close();
+            this.conm.Close();
+return data;
+}
+
 //insert a data fron mysql.
 public void Insert(string query)
 {
