@@ -20,10 +20,10 @@ StreamReader r = new StreamReader("conect-sql.json");
 string readFile= r.ReadToEnd();
 conectSql conectData= JsonConvert.DeserializeObject<conectSql>(readFile);
 
-            this.conm = new MySqlConnection("Server="+conectData.server+";Database="+conectData.Database+";Uid="+conectData.user+";Pwd="+conectData.senha+";SSL Mode=None");
+			this.conm = new MySqlConnection("Server="+conectData.server+";Database="+conectData.Database+";Uid="+conectData.user+";Pwd="+conectData.senha+";SSL Mode=None");
         }
 
-        public List<dataModel> GetAll(string query)
+        private List<dataModel> GetAllFClass(string query)
         {
 			            List<dataModel> data = new List<dataModel>();
 
@@ -36,58 +36,49 @@ conectSql conectData= JsonConvert.DeserializeObject<conectSql>(readFile);
                 data.Add(new dataModel
                 {
 //get a data em mysql
-id = Convert.ToInt32(reader["id"]),
+id = Convert.ToInt32(reader["id"]),	
                 Nome =Convert.ToString(reader["nome"]),
                 disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
-                descricao =Convert.ToString(reader["descricao"])
+      	          descricao =Convert.ToString(reader["descricao"])
                 });
             }
             reader.Close();
             this.conm.Close();
+return data;
+}
+
+private void DeletInsert(string query)
+{
+            this.conm.Open();
+            MySqlCommand cmd = new MySqlCommand(query, this.conm);
+            cmd.ExecuteNonQuery();
+            this.conm.Close();
+}
+
+//return all
+public List<dataModel> GetAll(string query)
+{
+var data=GetAllFClass(query);
 return data;
 }
 
 //return app for id.
         public List<dataModel> GetId(string query)
         {
-			            List<dataModel> data = new List<dataModel>();
-
-            this.conm.Open();
-            MySqlCommand cmd = new MySqlCommand(query, this.conm);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                data.Add(new dataModel
-                {
-//get a data em mysql
-id = Convert.ToInt32(reader["id"]),
-                Nome =Convert.ToString(reader["nome"]),
-                disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
-                descricao =Convert.ToString(reader["descricao"])
-                });
-            }
-            reader.Close();
-            this.conm.Close();
+var data=GetAllFClass(query);
 return data;
 }
 
 //delet fron id
         public void Delete(string query)
         {
-            this.conm.Open();
-            MySqlCommand cmd = new MySqlCommand(query, this.conm);
-            cmd.ExecuteNonQuery();
-            this.conm.Close();
+DeletInsert(query);
 }
 
 //insert a data fron mysql.
 public void Insert(string query)
 {
-            this.conm.Open();
-            MySqlCommand cmd = new MySqlCommand(query, this.conm);
-            cmd.ExecuteNonQuery();
-            this.conm.Close();
+            DeletInsert(query);
 }
 
 }
