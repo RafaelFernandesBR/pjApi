@@ -1,0 +1,16 @@
+get  https://localhost:7206/allapps
+
+###
+get https://localhost:7206/getid
+?id=7
+
+###
+//enviaDados
+get https://localhost:7206/enviadados
+?nome=beleza
+&descricao=outroApp
+&disponivel_ate=02-02-2024
+
+###
+get https://localhost:7206/deleteId
+?id=7
