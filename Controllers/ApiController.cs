@@ -47,7 +47,7 @@ disponivel_ate=disponivel_parc[2]+"-"+disponivel_parc[1]+"-"+disponivel_parc[0];
 	dataModel tt=new dataModel();
 	//delete data
 	tt.Delete("DELETE FROM aplicativos WHERE id = "+id+";");
-			return Json("ok");
+			return Json(StatusCode(200));
 			}
 		}
 	}
