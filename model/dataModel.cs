@@ -12,6 +12,7 @@ namespace pjApi.models
         public string Nome { get; set; }
 public DateTime disponivel_ate{get; set; }
 public string descricao{get; set; }
+public string url{get; set; }
 
         public dataModel()
         {
@@ -34,13 +35,14 @@ conectSql conectData= JsonConvert.DeserializeObject<conectSql>(readFile);
             while (reader.Read())
             {
                 data.Add(new dataModel
-                {
+{
 //get a data em mysql
 id = Convert.ToInt32(reader["id"]),	
-                Nome =Convert.ToString(reader["nome"]),
-                disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
-      	          descricao =Convert.ToString(reader["descricao"])
-                });
+Nome =Convert.ToString(reader["nome"]),
+disponivel_ate =Convert.ToDateTime(reader["disponivel_ate"]),
+descricao =Convert.ToString(reader["descricao"]),
+url=Convert.ToString(reader["url"])
+});
             }
             reader.Close();
             this.conm.Close();

@@ -22,13 +22,13 @@
 			}
 
 		[HttpGet("[action]")]
-			public IActionResult enviaDados([FromQuery] string nome, string descricao, string disponivel_ate)
+			public IActionResult enviaDados([FromQuery] string nome, string descricao, string disponivel_ate, string url)
 			{
 string [] disponivel_parc=disponivel_ate.Split("-");
 disponivel_ate=disponivel_parc[2]+"-"+disponivel_parc[1]+"-"+disponivel_parc[0];
 	dataModel tt=new dataModel();
 	//inserte data
-	tt.Insert("INSERT INTO aplicativos(nome,descricao,disponivel_ate) VALUES('"+nome+"','"+descricao+"','"+disponivel_ate+"')");
+	tt.Insert("INSERT INTO aplicativos(nome,descricao,disponivel_ate, url) VALUES('"+nome+"','"+descricao+"','"+disponivel_ate+"','"+url+"')");
 			return Json(StatusCode(200));
 			}
 
