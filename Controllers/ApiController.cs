@@ -21,11 +21,11 @@ namespace pjApi.Controllers
             return Json(final);
         }
 
-        [HttpGet("[action]")]
-        public IActionResult enviaDados([FromQuery] string nome, string descricao, string disponivel_ate, string url)
+        [HttpPost("[action]")]
+        public IActionResult enviaDados(string nome, string descricao, string disponivel_ate, string url)
         {
             dataModel tt = new dataModel();
-            //inserte data
+                //inserte data
             tt.Insert("INSERT INTO aplicativos(nome,descricao,disponivel_ate, url) VALUES('" + nome + "','" + descricao + "','" + disponivel_ate + "','" + url + "')");
             return Json(StatusCode(200));
         }
@@ -39,8 +39,8 @@ namespace pjApi.Controllers
             return Json(final);
         }
 
-        [HttpGet("[action]")]
-        public IActionResult deleteId([FromQuery] int id)
+        [HttpDelete("[action]")]
+        public IActionResult deleteId(int id)
         {
             dataModel tt = new dataModel();
             //delete data
